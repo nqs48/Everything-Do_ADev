@@ -1,0 +1,120 @@
+body{
+    background-color: rgb(5,5,20);
+}
+
+.container{
+    background-color: #eaeaea;
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 10px 30px;
+}
+
+.header{
+    border-bottom: 1px solid black;
+}
+
+.titulo{
+    text-align:  center;
+}
+
+.boton-agregar{
+    padding: 0.4rem;
+    display: block;
+    margin: 0 auto;
+    margin-top: -15px;
+    font-weight: bold;
+    border: 1px solid black;
+
+}
+.boton-agregar:hover{
+    background-color: black;
+    color: white;
+}
+
+.boton-agregar:active{
+    background-color: gray;
+    color: black;
+}
+
+.lista-tareas{
+    list-style: none;
+    padding: 0;
+}
+
+.lista-tareas li{
+    margin: 10px 0;
+    background-color: #cecbcb;
+    padding: 0.3rem;
+    display: flex;
+    justify-content: space-between;
+}
+
+.lista-tareas li:hover{
+    background-color: rgb(175,166,166);
+}
+
+.boton-eliminar{
+    font-weight: bold;
+    border: none;
+}
+
+.boton-eliminar:hover{
+    background-color: black;
+    color: white;
+}
+
+.boton-eliminar:active{
+  background-color: gray;
+  color: black;
+}
+
+.input-tarea{
+    border: none;
+    background-color: #cecbcb;
+    padding: 4px;
+    width: 100%;
+    outline: none;
+    text-transform: none;
+    font-size: 1.2rem;
+}
+
+.input-tarea:focus{
+    background-color: #eaeaea;
+}
+
+.container-buttons{
+    display: flex;
+    justify-content: space-around;
+}
+
+.boton{
+  width: 6rem;
+  padding: 0.4rem;
+  border: 1px solid black;
+}
+
+.boton{
+  transform: scale(0.97);
+}
+
+.boton-limpiar:hover{
+  background-color: #e63946;
+  color: white;
+}
+
+.boton-listar:hover{
+  background-color: #0077b6;
+  color: white;
+}
+
+.boton-tarea:hover{
+  background-color: #007f5f;
+  color: white;
+}
+
+
+
+
+
+
+

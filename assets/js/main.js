@@ -1,60 +1,29 @@
 import { success, error } from "./sweet.alerts.js";
 
 //Elementos del DOM
-const boton_agregar = document.querySelector(".boton-agregar");
 const lista_tareas = document.querySelector(".lista-tareas");
 const boton_limpiar = document.querySelector(".boton-limpiar");
-const boton_listar = document.querySelector(".boton-listar");
-const boton_tarea = document.querySelector(".boton-tarea");
 
 //Declaración variables LocalStorage
 let arregloTareas;
 let contador;
 
-//Declaración de eventos
-
-boton_agregar.addEventListener("click", () => {
-  const inputTarea = document.querySelector(".input-tarea");
-  agregarTarea(inputTarea.value);
-  inputTarea.value = "";
-});
-
-boton_listar.addEventListener("click", () => {
-  listarTareas();
-});
-
-boton_tarea.addEventListener("click", () => {
-  inputTareas();
-});
-
 boton_limpiar.addEventListener("click", () => {
   let title = "Todas las tareas han sido eliminadas";
+  if (arregloTareas.length > 0) {
+    success(title);
+  } else {
+    let text = "No hay tareas para eliminar";
+    error(text);
+  }
   arregloTareas = [];
   contador = 0;
   setData();
-  success(title);
   inputTareas();
 });
 
-lista_tareas.addEventListener("keypress", (event) => {
-  if (event.keyCode == 13) {
-    let id = event.target.id;
-    let descripcion = event.target.value;
-    editarTareas(id, descripcion);
-  }
-});
-
-lista_tareas.addEventListener("click", (event) => {
-  if (event.target.classList.contains("boton-eliminar")) {
-    let idTarea = event.target.id.substring(1);
-    eliminarTareas(idTarea);
-    let lista = document.getElementById(`L${idTarea}`);
-    lista.remove();
-  }
-});
-
 //Funciones de Lógica de Aplicación
-const agregarTarea = (descripcion) => {
+export const agregarTarea = (descripcion) => {
   if (descripcion.trim() == "") {
     let text = "La tarea no puede estar vacía!";
     error(text);
@@ -72,7 +41,11 @@ const agregarTarea = (descripcion) => {
   }
 };
 
-const listarTareas = () => {
+export const listarTareas = () => {
+  if (arregloTareas.length < 1) {
+    let text = "No hay tareas para listar, empieza a crearlas!";
+    error(text);
+  }else{
   lista_tareas.innerHTML = "";
   getArregloTareas()
     .reverse()
@@ -91,9 +64,10 @@ const listarTareas = () => {
       li.append(input, button);
       lista_tareas.appendChild(li);
     });
+  }
 };
 
-const inputTareas = () => {
+export const inputTareas = () => {
   lista_tareas.innerHTML = "";
   let li = document.createElement("li");
   let input = document.createElement("input");
@@ -114,7 +88,8 @@ export const editarTareas = (id, descripcion) => {
   setData();
 };
 
-const eliminarTareas = (id) => {
+export const eliminarTareas = (id) => {
+  let title = "La tarea ha sido eliminada";
   let newArreglo = [];
   arregloTareas.forEach((tarea) => {
     if (tarea.id != id) {
@@ -122,6 +97,7 @@ const eliminarTareas = (id) => {
     }
   });
   arregloTareas = newArreglo;
+  success(title);
   setData();
 };
 

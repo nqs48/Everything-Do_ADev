@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="./assets/css/styles.css" />
+    <script src="https://kit.fontawesome.com/1f855317d1.js" crossorigin="anonymous"></script>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio,line-clamp"></script>
     <script type="module" src="./assets/js/main.js"></script>
@@ -14,31 +15,41 @@
   </head>
   <body>
     <div
-      class="flex justify-center pt-10 min-w-screen min-h-[480px] bg-gray-800 h-screen"
+      class="flex justify-center pt-32 min-w-screen min-h-[480px] bg-gray-800 h-screen"
     >
       <input
         type="checkbox"
-        class="bg-red-400 h-16 w-16 rounded-[100%] cursor-pointer appearance-none peer z-20 checked:opacity-50 transition-all duration-300 checked:mt-1 checked:h-8 checked:w-8"
+        class="bg-red-400 h-16 w-16 rounded-[100%] cursor-pointer appearance-none peer z-20 checked:opacity-50 transition-all duration-300 checked:mt-2 checked:h-8 checked:w-8"
       />
+
       <div
         class="absolute h-16 w-16 bg-gray-100 rounded-[100%] opacity-0 transition-all duration-200 peer-checked:rounded-[2%] peer-checked:h-auto peer-checked:w-96 peer-checked:opacity-100 peer-checked:visible flex flex-col px-3 pt-12 invisible"
       >
         <div class="m-1">
           <div class="container-main">
-            <button class="boton-agregar">Agregar una tarea</button>
+            <button class="boton-agregar">
+              <i class="fa-solid fa-plus"></i>Agregar
+            </button>
+            
             <ul class="lista-tareas">
               <li>
                 <input required type="text" class="input-tarea" />
               </li>
             </ul>
-            <div class="container-buttons">
-              <button class="boton-limpiar boton">Limpiar Todo</button>
-              <button class="boton-listar boton">Listar Tareas</button>
-              <button class="boton-tarea boton">Crear</button>
-            </div>
           </div>
         </div>
       </div>
+
+      <div class="container-buttons peer-checked:visible invisible">
+        <button class="boton-limpiar boton ml-2 border-2 border-red-500 p-2 text-red-500 hover:text-white hover:bg-red-500 rounded-lg">Limpiar Todo</button>
+        <button class="boton-tarea boton ml-2 border-2 border-blue-500 p-2 text-blue-500 hover:text-white hover:bg-blue-500 rounded-lg">
+          <i class="fa-solid fa-home"></i>
+        </button>
+        <button class="boton-listar boton ml-2 border-2 border-green-500 p-2 text-green-500 hover:text-white hover:bg-green-500 rounded-lg">Listar Tareas</button>
+
+      </div>
+
+      
     </div>
   </body>
 </html>

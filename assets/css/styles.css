@@ -52,13 +52,17 @@ body {
   background-color: rgb(175, 166, 166);
 }
 
+.icon-del{
+  width:100%;
+  height:100%;
+}
+
 .boton-eliminar {
-  font-weight: bold;
   border: none;
+  padding: 0.5rem;
 }
 
 .boton-eliminar:hover {
-  background-color: black;
   color: white;
 }
 
@@ -83,13 +87,25 @@ body {
 
 .container-buttons {
   display: flex;
-  justify-content: space-around;
+  overflow: hidden;
+  height: 10%;
+  width: 100%;
+  position: absolute;
+  top: 1rem;
+  justify-content: center;
+  align-items: center;
+
 }
 
 .boton {
-  
-  padding: 0.4rem;
-  border: 1px solid black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 0.5rem;
+  /* padding: 0.4rem; */
+  /* border: 1px solid black; */
+  width: 10rem;
+  height:50%;
 }
 
 .boton:active {

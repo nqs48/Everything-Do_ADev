@@ -58,9 +58,13 @@ export const listarTareas = () => {
       input.classList.add("input-tarea");
       input.value = `${tarea.descripcion}`;
       let button = document.createElement("button");
+      button.classList.add("boton-eliminar", "icon", "fas", "fa-trash-alt");
       button.id = `D${tarea.id}`;
-      button.classList.add("boton-eliminar");
-      button.textContent = "X";
+      // button.textContent = "X";
+      // let icon = document.createElement("i");
+      // icon.classList.add("fas", "fa-trash-alt");
+      
+      // button.append(icon);
       li.append(input, button);
       lista_tareas.appendChild(li);
     });

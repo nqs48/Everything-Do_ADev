@@ -1,11 +1,12 @@
 .main-cont {
-  background-image: url("https://www.fonewalls.com/wp-content/uploads/2019/12/Fingerprint-Dont-Touch-Black-Background-Wallpaper-720x1600-1.jpg");
-  background-size: 70vw;
+  background-image: url("https://res.cloudinary.com/adev48/image/upload/v1667549482/Deployments/Todo%20List/bg_desktop_bh3cjq.jpg");
+  background-size: cover;
   background-position: center;
 }
 
+
 .checking {
-  background-image: url("https://media4.giphy.com/media/26tn66XDQtXadfWrS/giphy.gif") !important;
+  background-image: url("https://res.cloudinary.com/adev48/image/upload/v1667549472/Deployments/Todo%20List/finger_desk_jjyja1.gif") !important;
   background-size: cover;
   background-position: center;
 }
@@ -113,4 +114,20 @@
 .boton:active {
   transform: scale(0.97);
 }
+
+@media (max-width: 700px) {
+  .main-cont {
+  background-image: url("https://res.cloudinary.com/adev48/image/upload/v1667549499/Deployments/Todo%20List/bg_mov_ljwysm.webp");
+  background-size: 70vw;
+  background-position: center;
+}
+
+.checking {
+  background-image: url("https://res.cloudinary.com/adev48/image/upload/v1667549510/Deployments/Todo%20List/finger_mov_zxr4ge.gif") !important;
+  background-size: cover;
+  background-position: center;
+}
+}
+
+
 

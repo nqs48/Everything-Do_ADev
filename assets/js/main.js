@@ -3,6 +3,7 @@ import { success, error } from "./sweet.alerts.js";
 //Elementos del DOM
 const lista_tareas = document.querySelector(".lista-tareas");
 const boton_limpiar = document.querySelector(".boton-limpiar");
+const boton_agregar= document.querySelector(".boton-agregar");
 
 //Declaración variables LocalStorage
 let arregloTareas;
@@ -45,38 +46,55 @@ export const listarTareas = () => {
   if (arregloTareas.length < 1) {
     let text = "No hay tareas para listar, empieza a crearlas!";
     error(text);
-  }else{
-  lista_tareas.innerHTML = "";
-  getArregloTareas()
-    .reverse()
-    .forEach((tarea) => {
-      let li = document.createElement("li");
-      li.id = `L${tarea.id}`;
-      let input = document.createElement("input");
-      input.id = `${tarea.id}`;
-      input.type = "text";
-      input.classList.add("input-tarea");
-      input.value = `${tarea.descripcion}`;
-      let button = document.createElement("button");
-      button.classList.add("boton-eliminar", "icon", "fas", "fa-trash-alt");
-      button.id = `D${tarea.id}`;
-      // button.textContent = "X";
-      // let icon = document.createElement("i");
-      // icon.classList.add("fas", "fa-trash-alt");
-      
-      // button.append(icon);
-      li.append(input, button);
-      lista_tareas.appendChild(li);
-    });
+  } else {
+    boton_agregar.classList.add("invisible");
+    lista_tareas.innerHTML = "";
+    getArregloTareas()
+      .reverse()
+      .forEach((tarea) => {
+        let li = document.createElement("li");
+        li.classList.add("container-input");
+        li.id = `L${tarea.id}`;
+        let input = document.createElement("input");
+        input.id = `${tarea.id}`;
+        input.type = "text";
+        input.classList.add(
+          "input-tarea",
+          "w-full",
+          "rounded-2xl",
+          "bg-gray-50",
+          "px-4",
+          "ring-2",
+          "ring-gray-200",
+          "focus-within:ring-gray-800"
+        );
+        input.value = `${tarea.descripcion}`;
+        let button = document.createElement("button");
+        button.classList.add("boton-eliminar", "icon", "fas", "fa-trash");
+        button.id = `D${tarea.id}`;
+        li.append(input, button);
+        lista_tareas.appendChild(li);
+      });
   }
 };
 
 export const inputTareas = () => {
+  boton_agregar.classList.remove("invisible");
   lista_tareas.innerHTML = "";
   let li = document.createElement("li");
   let input = document.createElement("input");
   input.type = "text";
-  input.classList.add("input-tarea");
+  input.setAttribute("placeholder", "Escribe tu tarea");
+  input.classList.add(
+    "input-tarea",
+    "w-full",
+    "rounded-2xl",
+    "bg-gray-50",
+    "px-4",
+    "ring-2",
+    "ring-gray-200",
+    "focus-within:ring-gray-800"
+  );
   li.append(input);
   lista_tareas.appendChild(li);
 };

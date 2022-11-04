@@ -1,13 +1,25 @@
-body {
-  background-color: rgb(5, 5, 20);
+.main-cont {
+  background-image: url("https://www.fonewalls.com/wp-content/uploads/2019/12/Fingerprint-Dont-Touch-Black-Background-Wallpaper-720x1600-1.jpg");
+  background-size: 70vw;
+  background-position: center;
+}
+
+.checking {
+  background-image: url("https://media4.giphy.com/media/26tn66XDQtXadfWrS/giphy.gif") !important;
+  background-size: cover;
+  background-position: center;
+}
+
+.checking:hover {
+  transform: scale(1.3);
 }
 
 .container-main {
-  background-color: #eaeaea;
+  background-color: white;
+  border-radius: 1rem 1rem 0 0;
   max-width: 400em;
   margin: 0 auto;
   padding: 10px 30px;
-  
 }
 
 /* .header {
@@ -42,19 +54,19 @@ body {
 
 .lista-tareas li {
   margin: 10px 0;
-  background-color: #cecbcb;
+  /* background-color: white; */
   padding: 0.3rem;
   display: flex;
   justify-content: space-between;
 }
 
-.lista-tareas li:hover {
-  background-color: rgb(175, 166, 166);
-}
+/* .lista-tareas li:hover {
+  background-color: white;
+} */
 
-.icon-del{
-  width:100%;
-  height:100%;
+.icon-del {
+  width: 100%;
+  height: 100%;
 }
 
 .boton-eliminar {
@@ -63,26 +75,19 @@ body {
 }
 
 .boton-eliminar:hover {
-  color: white;
+  color: rgb(239 68 68);
 }
 
 .boton-eliminar:active {
-  background-color: gray;
-  color: black;
+  transform: scale(0.95);
 }
 
-.input-tarea {
-  border: none;
-  background-color: #cecbcb;
-  padding: 4px;
-  width: 100%;
-  outline: none;
-  text-transform: none;
-  font-size: 1.2rem;
+.container-input:hover {
+  transform: scale(1.03);
 }
 
-.input-tarea:focus {
-  background-color: #eaeaea;
+.input-tarea:active {
+  transform: scale(0.97);
 }
 
 .container-buttons {
@@ -92,9 +97,8 @@ body {
   width: 100%;
   position: absolute;
   top: 1rem;
-  justify-content: center;
+  justify-content: space-evenly;
   align-items: center;
-
 }
 
 .boton {
@@ -102,27 +106,11 @@ body {
   justify-content: center;
   align-items: center;
   margin: 0 0.5rem;
-  /* padding: 0.4rem; */
-  /* border: 1px solid black; */
   width: 10rem;
-  height:50%;
+  height: 50%;
 }
 
 .boton:active {
   transform: scale(0.97);
 }
 
-.boton-limpiar:hover {
-  background-color: #e63946;
-  color: white;
-}
-
-.boton-listar:hover {
-  background-color: #0077b6;
-  color: white;
-}
-
-.boton-tarea:hover {
-  background-color: #007f5f;
-  color: white;
-}

@@ -1,9 +1,9 @@
-import { success, error } from "./sweet.alerts.js";
+import { success, error, confirmation } from "./sweet.alerts.js";
 
 //Elementos del DOM
 const lista_tareas = document.querySelector(".lista-tareas");
 const boton_limpiar = document.querySelector(".boton-limpiar");
-const boton_agregar= document.querySelector(".boton-agregar");
+const boton_agregar = document.querySelector(".boton-agregar");
 
 //Declaración variables LocalStorage
 let arregloTareas;
@@ -15,7 +15,8 @@ boton_limpiar.addEventListener("click", () => {
     success(title);
   } else {
     let text = "No hay tareas para eliminar";
-    error(text);
+    let title = "Oops...";
+    error(title, text);
   }
   arregloTareas = [];
   contador = 0;
@@ -27,7 +28,8 @@ boton_limpiar.addEventListener("click", () => {
 export const agregarTarea = (descripcion) => {
   if (descripcion.trim() == "") {
     let text = "La tarea no puede estar vacía!";
-    error(text);
+    let title = "Oops...";
+    error(title, text);
   } else {
     let title = "Tu tarea ha sido creada satisfactoriamente";
     contador = parseInt(contador) + 1;
@@ -45,7 +47,8 @@ export const agregarTarea = (descripcion) => {
 export const listarTareas = () => {
   if (arregloTareas.length < 1) {
     let text = "No hay tareas para listar, empieza a crearlas!";
-    error(text);
+    let title = "Oops...";
+    error(title, text);
   } else {
     boton_agregar.classList.add("invisible");
     lista_tareas.innerHTML = "";
@@ -111,16 +114,34 @@ export const editarTareas = (id, descripcion) => {
 };
 
 export const eliminarTareas = (id) => {
-  let title = "La tarea ha sido eliminada";
-  let newArreglo = [];
-  arregloTareas.forEach((tarea) => {
-    if (tarea.id != id) {
-      newArreglo.push(tarea);
+  const res = confirmation();
+  res.then((result) => {
+    if (result.isConfirmed) {
+      let title = "La tarea ha sido eliminada";
+      let newArreglo = [];
+      arregloTareas.forEach((tarea) => {
+        if (tarea.id != id) {
+          newArreglo.push(tarea);
+        }
+      });
+      arregloTareas = newArreglo;
+      success(title);
+      setData();
+    } else if (
+      result.dismiss === Swal.DismissReason.cancel
+    ) {
+      let title = "Cancelado !!";
+      let text = "Tu archivo imaginario está a salvo 🙂";
+      error(title, text);
+    }
+    if (arregloTareas.length < 1) {
+      inputTareas();
+    } else {
+
+      listarTareas();
     }
   });
-  arregloTareas = newArreglo;
-  success(title);
-  setData();
+  
 };
 
 //Funciones Asociadas al LocalStorage

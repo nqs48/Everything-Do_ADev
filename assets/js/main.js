@@ -10,18 +10,33 @@ let arregloTareas;
 let contador;
 
 boton_limpiar.addEventListener("click", () => {
-  let title = "Todas las tareas han sido eliminadas";
-  if (arregloTareas.length > 0) {
-    success(title);
-  } else {
-    let text = "No hay tareas para eliminar";
+  if (arregloTareas.length < 1) {
+    let text = "No hay tareas para listar, empieza a crearlas!";
     let title = "Oops...";
     error(title, text);
+  }else{
+    const res = confirmation();
+    res.then((result) => {
+      if (result.isConfirmed) {
+        let title = "Todas las tareas han sido eliminadas";
+        if (arregloTareas.length > 0) {
+          success(title);
+        } else {
+          let text = "No hay tareas para eliminar";
+          let title = "Oops...";
+          error(title, text);
+        }
+        arregloTareas = [];
+        contador = 0;
+        setData();
+        inputTareas();
+      } else if (result.dismiss === Swal.DismissReason.cancel) {
+        let title = "Cancelado !!";
+        let text = "Tu archivos imaginarios están a salvo 🙂";
+        error(title, text);
+      }
+    });
   }
-  arregloTareas = [];
-  contador = 0;
-  setData();
-  inputTareas();
 });
 
 //Funciones de Lógica de Aplicación
@@ -127,9 +142,7 @@ export const eliminarTareas = (id) => {
       arregloTareas = newArreglo;
       success(title);
       setData();
-    } else if (
-      result.dismiss === Swal.DismissReason.cancel
-    ) {
+    } else if (result.dismiss === Swal.DismissReason.cancel) {
       let title = "Cancelado !!";
       let text = "Tu archivo imaginario está a salvo 🙂";
       error(title, text);
@@ -137,11 +150,9 @@ export const eliminarTareas = (id) => {
     if (arregloTareas.length < 1) {
       inputTareas();
     } else {
-
       listarTareas();
     }
   });
-  
 };
 
 //Funciones Asociadas al LocalStorage
